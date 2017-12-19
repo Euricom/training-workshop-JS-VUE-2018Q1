@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Advanced</title>
+
+    <style>
+        html,
+        body,
+        #app {
+            margin: 0;
+            height: 100%;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+        }
+        
+        textarea,
+        #app div {
+            display: inline-block;
+            width: 50%;
+            height: 100%;
+            vertical-align: top;
+            box-sizing: border-box;
+            padding: 0 20px;
+            float: left;
+        }
+        
+        textarea {
+            border: none;
+            border-right: 1px solid #ccc;
+            resize: none;
+            outline: none;
+            background-color: #f6f6f6;
+            font-size: 14px;
+            font-family: 'Monaco', courier, monospace;
+            padding: 20px;
+        }
+        
+        code {
+            color: #f66;
+        }
+        
+        button {
+            position: absolute;
+            right: 51%;
+            top: 1%;
+            background: #67c088;
+            box-shadow: 0 2px 0 0 #47ad6d;
+            border: 0;
+            border-radius: 3px;
+            color: #FFF;
+            cursor: pointer;
+            display: inline-block;
+            font-family: "Fedra Sans Screen Regular 2", "Open Sans", sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            padding: 1.0125rem 1.5rem 0.65217rem;
+            text-align: center;
+            text-transform: uppercase;
+            vertical-align: top;
+            word-wrap: break-word;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <button @click="reset">Reset</button>
+        <textarea :value="input" @input="update"></textarea>
+        <markdown :markdown="input"></markdown>
+    </div>
+
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <script src="https://unpkg.com/marked@0.3.6"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
