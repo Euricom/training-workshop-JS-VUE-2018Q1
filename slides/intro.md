@@ -44,6 +44,8 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 - Using 3th party libraries (*)
 - Using ES6 and more modern techniques (*)
 
+---
+
 # Prerequisites
 
 - Knowledge / Experience
@@ -68,72 +70,7 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 - [VueJS Master](./vue-master.md)
 - -???????????
 
----
+[See Also](https://github.com/Euricom/training-workshop-JS-VUE-jan2018/tree/master/slides)
 
-# A better VSCode
 
-> Powercharge your editor
 
-----
-
-## Plugins - Must have
-
-| Plugin                    | Remark                           |
-| ------------------------- | ---------------------------------|
-| EditorConfig for VS Code  | -                                |
-| ESLint                    | -                                |
-| Git History (git log)     | Git commits logs                 |
-| Git Blame                 | See Git Blame info in status bar |
-| Git Flow                  | Git Flow Branching commands      |
-| beautify                  | Format JS, CSS, and HTML         |
-| npm Intellisense          | Autocompletes npm modules        |
-| Path Intellisense         | Autocompletes path and filenames |
-
-----
-
-## Plugins - Usefull
-
-| Plugin                    | Remark                           |
-| ------------------------- | ---------------------------------|
-| vetur                     | Syntax highlighting .vue files   |
-| VueHelper                 | Vue code snippets                |
-| mssql                     | Autocomplete & exec sql scripts  |
-| Spelling and Grammer      | -                                |
-| Document This             | JSDoc comments                   |
-| ES6 Mocha Snippets        | -                                |
-| SVG preview               | -                                |
-
-----
-
-## Custom config
-
-Goto `preferences - user settings`
-
-```json
-    // auto save on close
-    "files.autoSave": "onFocusChange",
-
-    // let ESlint validate my JS code
-    "javascript.validate.enable": false,
-
-    // default exclude on search
-    "search.exclude": {
-        "**/*bundle.js": true,
-        "**/node_modules": true,
-        "**/bower_components": true
-    },
-```
-```json
-    // don't check typescript version'
-    "typescript.check.tscVersion": false,
-
-    // linting vue files
-    "files.associations": {
-        "*.vue": "vue"
-    },
-
-    // github markdown preview
-    "markdown.styles": [
-        "https://gitcdn.xyz/repo/aui/vs-code-github-markdown-theme/master/index.css"
-    ],
-```

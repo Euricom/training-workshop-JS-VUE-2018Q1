@@ -18,6 +18,101 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 
 ---
 
+# GIT
+
+Git is used everywhere
+
+- All open source projects
+- All JavaScript libraries
+- Default support in IDE & editors
+- All npm modules are stored from github
+- All content of this workshop :)
+
+----
+
+# GIT
+
+Clone this repo
+
+```
+mkdir git
+cd git
+git clone https://github.com/Euricom/training-workshop-JS-VUE-jan2018.git
+cd training-workshop-JS-VUE-jan2018
+```
+
+Get latest version of repo
+
+```
+cd training-workshop-JS-VUE-jan2018
+git pull
+```
+
+----
+
+# GIT
+
+3th party git tools
+
+- [SourceTree](https://www.sourcetreeapp.com/)
+- [Gitkraken](https://www.gitkraken.com/)
+
+---
+
+# Markdown
+
+> The text format for developers
+
+----
+
+# Markdown
+
+All slides and documentation is placed in markdown
+
+```markdown
+# Header 1
+## Header 2
+
+Unordered
+
++ Create a list by starting a line with `+`, `-`, or `*`
++ Sub-lists are made by indenting 2 spaces
+
+Ordered
+
+1. Lorem ipsum dolor sit amet
+2. Consectetur adipiscing elit
+3. Integer molestie lorem at massa
+
+Ordered
+
+1. Lorem ipsum dolor sit amet
+2. Consectetur adipiscing elit
+3. Integer molestie lorem at massa
+
+...
+```
+
+[See Also](https://guides.github.com/features/mastering-markdown/) and [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+
+----
+
+# Markdown
+
+Tools
+
+- [VSCode](https://code.visualstudio.com/)
+- http://markdownpad.com
+- https://caret.io/
+
+Online Tools
+
+- https://dillinger.io/
+- https://stackedit.io/editor
+
+
+---
+
 # VSCode
 
 > Powercharge your development environment
@@ -28,7 +123,7 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 
 Free, Open Source, Runs everywhere
 
-<img src="../images/vscode.png" width="600px"><img>
+<img src="./images/vscode.png" width="600px"><img>
 
 [Visual Studio Code](https://code.visualstudio.com/)
 
@@ -141,11 +236,27 @@ install
 npm install eslint        # local eslint tool
 npm install jquery        # ES6 module
 
-# to install all modules defined in the package.json
-npm install
-
 # to remove a module
 npm uninstall jquery
+```
+
+----
+
+## Exclude from Source Control
+
+A ```node_modules``` folder can become big fast <br>(base/node_modules: 27,6 MB, 3209 files), so always ignore it:
+
+.gitignore
+
+```
+node_modules/
+```
+
+For a new developer (or build server)
+
+```bash
+# to install all modules defined in the package.json
+npm install
 ```
 
 ---
