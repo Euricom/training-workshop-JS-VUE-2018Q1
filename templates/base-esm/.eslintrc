@@ -2,8 +2,7 @@
   "extends": ["airbnb-base", "prettier"],
   "globals": {},
   "env": {
-    "browser": true,
-    "node": true
+    "browser": true
   },
   "rules": {
     "no-console": [0, ""],
