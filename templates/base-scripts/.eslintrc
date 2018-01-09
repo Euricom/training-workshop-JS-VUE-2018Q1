@@ -1,0 +1,17 @@
+{
+  "extends": ["airbnb-base", "prettier"],
+  "globals": {
+    "calc": true
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "no-console": [0, ""],
+    "array-callback-return": "off",
+    "consistent-return": "off",
+    "strict": 0,
+    "func-names": 0
+  }
+}
