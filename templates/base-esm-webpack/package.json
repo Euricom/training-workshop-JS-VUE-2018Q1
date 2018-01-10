@@ -1,0 +1,29 @@
+{
+  "name": "base-vue",
+  "description": "A Vue.js starter project",
+  "version": "1.0.0",
+  "author": "Peter Cosemans <peter.cosemans@euri.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "serve": "webpack-dev-server --open --hot",
+    "build": "webpack --progress --hide-modules",
+    "cleanup": "rimraf dist",
+    "lint": "eslint 'src/**/*.js}'; exit 0",
+    "format": "prettier --write '**/*.{js,css}'"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "prettier": "^1.9.2",
+    "rimraf": "^2.6.2",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.10.1"
+  }
+}
