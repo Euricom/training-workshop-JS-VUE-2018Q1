@@ -174,6 +174,10 @@ Goto `preferences - user settings`
         "extensions": [".js", ".vue"]
     },
     "eslint.validate": ["javascript", "vue"],
+
+    // formatting vue files
+    "vetur.format.defaultFormatter.html": "js-beautify-html",
+    "vetur.format.defaultFormatter.js": "prettier"
 }
 ```
 
