@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" class="container" v-cloak>
+    <h1>{{message}}</h1>
+
+    <!-- exercise: toggle text -->
+
+    <p :class="{ hidden: !showText }">
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+    </p>
+    <p v-if="showText">
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+    </p>
+    <p :hidden="!showText">
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+    </p>
+    <br>
+    <br>
+    <button @click="onToggle()">Toggle Text</button>
+    <button @click="showText = !showText">Alternative Toggle Text</button>
+
+    <hr>
+
+    <!-- exercise: alert box -->
+
+    <alert type="info">
+      You are doing good
+    </alert>
+    <alert v-if="alertMessage" @closed="onClosed()">
+      {{alertMessage}}
+    </alert>
+    <button v-if="!alertMessage" @click="onShowAlert()">Show Alert Again</button>
+
+    <hr>
+
+  </div>
+
+  <!-- alternative template  
+  <script type="text/x-template" id="alert">
+    <div class="alert alert-dismissible" :class="alertClassName" role="alert">
+      <button v-if="_events.closed" type="button" class="close" @click="onClose()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <slot></slot>
+    </div>
+  </script>
+  -->
+
+  <script src="https://unpkg.com/vue@2.5.11/dist/vue.js"></script>
+  <script src="scripts/components/alert.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+
+</html>
