@@ -54,7 +54,7 @@ index.html
       {{ message }}
     </div>
     <!-- end vue template -->
-    
+
     <script src="https://unpkg.com/vue@2.5.11/dist/vue.js"></script>
     <script src="main.js"></script>
   </body>
@@ -118,7 +118,7 @@ variabled to inpect or change via the console.
 ---
 
 # Using .vue files
-> The modern way of writing vue applications 
+> The modern way of writing vue applications
 
 <img src="./images/vue-file.png" width="300px" /><br>
 
@@ -167,10 +167,10 @@ Note: Mark we are using ES Module syntax here.
 
 The browser doesn't understand:
 - .vue files
-- import / export 
+- import / export
 - ES modules
 
-So 
+So
 
 > To work with .vue files you must use a bundler (eg; webpack) that read vue files and translate it to ES5
 
@@ -203,6 +203,66 @@ $ vue init webpack-simple myapp
 or
 
 See ['./templates/base-vue-esm'](https://github.com/Euricom/training-workshop-JS-VUE-jan2018/tree/master/templates/base-vue-esm)
+
+---
+
+# Styling
+> Power-up your styling
+
+----
+
+## Styling in .vue file
+
+```html
+<!-- message.vue -->
+<template>
+  ...
+</template>
+
+<script>
+  ...
+</script>
+
+<style>
+h1 {
+    color: red
+}
+</style>
+```
+
+Notice that the style is applied to the full application
+
+----
+
+## Scoped styling
+
+```html
+<!-- message.vue -->
+<style scoped>
+h1 {
+    color: red
+}
+</style>
+```
+
+Notice that the styling is now  applied to the `Message` component only.
+
+----
+
+## Using less or sass
+
+```html
+<style lang="less">
+@import "~bootstrap/dist/css/bootstrap.css";
+@import (reference) "../variable.less"
+@alert-color: red
+h1 {
+    color: @alert-color
+}
+</style>
+```
+
+> You need to configure webpack to add less support
 
 ---
 
@@ -402,7 +462,7 @@ In the computed property you can access the data via the 'this' reference.
 
 ## Listening to events
 
-Use `@click` syntax 
+Use `@click` syntax
 
 ```html
 <!-- `greet` is the name of a method defined below -->
@@ -636,7 +696,7 @@ export {
     onClick() {
         this.$emit('handled', { id: 123 })
     }
-}  
+}
 </script>
 ```
 
@@ -654,7 +714,7 @@ export {
 
 ----
 
-## Filters 
+## Filters
 
 Simple text formatting
 

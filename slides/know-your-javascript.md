@@ -49,7 +49,7 @@ Note:
 
 <img src="./images/compatibility-table.png" width="1000px" /><br>
 
-- Edge, Chrome, Firefox and Safari: +95%
+- Edge, Chrome, Firefox and Safari: +97%
 - Node 8.x: +98%
 
 > [http://kangax.github.io/compat-table/es6/](http://kangax.github.io/compat-table/es6/)
@@ -59,7 +59,7 @@ Note:
 # What you should know
 > A quick course on JavaScript
 
----
+----
 
 ## Strict
 
@@ -158,38 +158,6 @@ const arrowGreeting = (message, name) => {
 // version 2
 const arrowGreeting = (message, name) => message + name;
 ```
-
-----
-
-## IIFE
-
-Immediately-Invoked Function Expression (IIFE)
-
-```js
-(function() {
-    'use strict'
-    const name = 'peter'
-    console.log(name)
-})();
-```
-
-Is used to isolate from global scope
-
-```js
-const myModule = (function($, global) {
-    const myVar = '';
-    function doThis() {
-        console.log(myVar)
-    }
-})(jquery, window);
-
-// in other file
-myModule.doThis();
-```
-
-```use strict``` is implicit set when using ES modules
-
-> So, except for ES modules, always use an IIFE.
 
 ----
 
@@ -308,7 +276,7 @@ user.name;         // 'peter'
 ### Summary: So to know the value of `this`:
 
 - Is the function called from an object created by `new`?
-- Is the function bind to an explicit `this` or is an arrow function?
+- Is the function hard bind to `this` or is an arrow function?
 - Is the function called with `call` or `apply` specifying an explicit `this`?
 - Is the function called via a containing/owing object (call context)?
 
@@ -372,32 +340,6 @@ NaN (a special Number value meaning Not-a-Number!)
 
 ----
 
-## typeof
-
-Ok, this is simple
-
-```js
-typeof 89                   // 'number'
-typeof true                 // 'boolean'
-typeof 'some text'          // 'string'
-typeof { name: '123' }      // 'object'
-typeof function() {}        // 'function'
-
-let val;
-typeof val                  // 'undefined'
-```
-
-But, what wait a moment!
-
-```js
-typeof null                 // 'object'
-typeof []                   // 'object'
-```
-
-[How to check an object?](https://stackoverflow.com/questions/8511281/check-if-a-value-is-an-object-in-javascript)
-
-----
-
 ## parseInt
 
 ```js
@@ -453,6 +395,121 @@ Better to use
 const a = 0/0
 isNaN(NaN)              // true
 Object.is(a, NaN)       // true
+```
+
+---
+
+# Array functions
+> makes your live easier
+
+----
+
+## Array handling
+
+Object array 
+
+```js
+const companies = [
+  { id: 1, name: 'Acme', category: 'finance', employees: 5},
+  { id: 4, name: 'Globex', category: 'tech', employees: 1010},
+  { id: 2, name: 'Soylent', category: 'food', employees: 120}
+]
+```
+
+Don't write this code!
+
+```js
+const names = [];
+for (let i=0; i < companies.length; i++) {
+  names.push(companies[i].name)
+}
+```
+
+```js
+const totEmployees = 0;
+for (let i=0; i < companies.length; i++) {
+  totEmployees += companies.employees
+}
+```
+
+```js
+companies.splice(2, 1);
+```
+
+----
+
+## ES array functions
+
+```js
+// forEach (loop over all items)
+companies.forEach(item => {
+  console.log(item)
+})
+
+// filter
+const bigCompanies = companies.filter(item => item.employees > 1000)
+
+// find
+const acme = companies.find(item => item.name === 'Acme')
+
+// map (transform items)
+const transformed = companies.map(item => {
+  return {
+    id: item.id.toString(),
+    name: item.name;
+  }
+})
+const companyNames = companies.map(item => item.name)
+
+// reduce
+const totEmployees = companies.map((acc, item) => {
+  return acc + item.employees;
+}, 0)
+
+// sort 
+const sortedCompanies = companies.sort((a, b) => a.name > b.name)
+```
+
+<small>[JavaScript Higher Order Functions & Arrays Youtube](https://www.youtube.com/watch?time_continue=495&v=rRgD1yVwIvE)</small>
+
+----
+
+## Usefull cases
+
+Chain functions
+
+```js
+const sortedNames = companies
+  .map(item => item.name)
+  .sort((a, b) => a > b)
+```
+
+Add item to array
+
+```js
+const name = 'Wolfoods';
+const newId = companies.reduce((acc, item) => {
+  return Math.max(acc, item.id);
+}, 0) + 1
+companies.push({
+  id: newId,
+  name
+  category: 'science'
+})
+```
+
+Remove an item from an array
+
+```js
+const idToRemove = 999;
+companies = companies.filter(item => item.id == idToRemove)
+```
+
+Update an item
+
+```js
+const company = companies.find(item => item.id == 1)
+company.name = 'Other name'
 ```
 
 ---
@@ -521,7 +578,7 @@ myAsyncAction(arg)
   })
 ```
 
-Wait or multiple promises
+Wait for multiple promises
 
 ```js
   const p1 = myAsyncAction(123);
@@ -565,11 +622,46 @@ You can use expressions
 
 > No more string concatenation!
 
+---
+
+# JavaScript Modules
+> Keep your code isolated
+
 ----
 
-## Import / Export
+## IIFE
 
-ES Modules (not supported by browser, you need a bundler)
+Immediately-Invoked Function Expression (IIFE).
+
+```js
+(function() {
+    'use strict'
+    const name = 'peter'
+    console.log(name)
+})();
+```
+
+Export your module
+
+```js
+const myModule = (function() {
+    const myVar = '';
+    function doThis() {
+        console.log(myVar)
+    }
+})();
+
+// in other file
+myModule.doThis();
+```
+
+> Always use strict mode.
+
+----
+
+## ES Module
+
+Oops, not supported by any browser (yet).
 
 ```js
 // service.js
@@ -584,6 +676,7 @@ export default config;
 ```
 
 ```js
+// main.js
 import config from './service';
 import { MAX_LENGTH, Car } from './service'
 
@@ -594,13 +687,14 @@ const car = new lib.Car();
 import config, { MAX_LENGTH, Car } from './service'
 ```
 
-Bye, bye IIFE ( Immediately-Invoked Function Expression )
+ES Modules can be used by using a transpiler (Babel)
+
+> No need for IIFE & strict mode :)
 
 ---
 
-## Resources
+# Resources
 
 - [You-Dont-Know-JS Book series](https://github.com/getify/You-Dont-Know-JS)
 - [Frontendmasters - Kyle Simpson](https://frontendmasters.com/courses/)
 - [JavaScript Weekly](http://javascriptweekly.com/)
-- [TOP 10 JAVASCRIPT TRAPS FOR A C# DEVELOPER](http://prasadhonrao.com/top-10-javascript-traps-for-a-csharp-developer/)
