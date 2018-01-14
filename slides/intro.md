@@ -14,8 +14,24 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 
 - Slides
 - Templates
-- Examples
-- Exercises
+- Samples
+
+---
+
+# Agenda
+
+08:00 Begin - Intro
+08:10 Development Environment
+08:30 Know Your Javascript
+10:00 VueJS Intro
+
+12:00 Lunch
+
+13:00 VueJS Intro cont.
+15:00 VueJS Http
+16:00 VueJS Extensions
+
+17:00 Questions & answers
 
 ---
 
@@ -58,19 +74,5 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
     + Node.js 9.3.0 - https://nodejs.org/en/
     + Git - https://git-scm.com/download/win
     + ConEmu: https://conemu.github.io/
-
----
-
-# Slides
-
-- [Intro](./intro.md)
-- [Know your JavaScript](./know-your-javascript.md)
-- [VueJS Intro](./vue-intro.md)
-- [VueJS Http](./vue-http.md)
-- [VueJS Master](./vue-master.md)
-- -???????????
-
-[See Also](https://github.com/Euricom/training-workshop-JS-VUE-jan2018/tree/master/slides)
-
 
 

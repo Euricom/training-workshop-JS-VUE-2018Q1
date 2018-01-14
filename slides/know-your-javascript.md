@@ -1,4 +1,4 @@
-# Know your javascript
+# Know Your Javascript
 <small>by Peter Cosemans</small>
 <br>
 <br>
@@ -139,8 +139,8 @@ const bar = function(arg){
 
 // Arrow function expression (ES6)
 const bar = (arg) => {
-  
-} 
+
+}
 ```
 
 Simpler syntax
@@ -406,7 +406,7 @@ Object.is(a, NaN)       // true
 
 ## Array handling
 
-Object array 
+Object array
 
 ```js
 const companies = [
@@ -466,7 +466,7 @@ const totEmployees = companies.map((acc, item) => {
   return acc + item.employees;
 }, 0)
 
-// sort 
+// sort
 const sortedCompanies = companies.sort((a, b) => a.name > b.name)
 ```
 
@@ -560,7 +560,7 @@ myAsyncAction(arg)
     // successfull result
   })
   .catch(err => {
-    // error 
+    // error
   })
 ```
 
@@ -574,7 +574,7 @@ myAsyncAction(arg)
     return myOtherAction(result.name);  // also returns an promise
   })
   .catch(err => {
-    // common error handling 
+    // common error handling
   })
 ```
 
