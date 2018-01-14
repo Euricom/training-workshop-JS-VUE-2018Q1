@@ -20,18 +20,18 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 
 # Agenda
 
-08:00 Begin - Intro
-08:10 Development Environment
-08:30 Know Your Javascript
-10:00 VueJS Intro
+- 08:00 Begin - Intro
+- 08:10 Development Environment
+- 08:30 Know Your Javascript
+- 10:00 VueJS Intro
 
-12:00 Lunch
+- 12:00 Lunch
 
-13:00 VueJS Intro cont.
-15:00 VueJS Http
-16:00 VueJS Extensions
+- 13:00 VueJS Intro cont.
+- 15:00 VueJS Http
+- 16:00 VueJS Extensions
 
-17:00 Questions & answers
+- 17:00 Questions & answers
 
 ---
 
@@ -56,9 +56,9 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 
 - Environment, Editor & Tooling
 - Know your javascript
-- The beginners guide to VueJS
-- Using 3th party libraries (*)
-- Using ES6 and more modern techniques (*)
+- VueJS Introduction
+- VueJS Http
+- VueJS & 3th party libraries
 
 ---
 
