@@ -21,11 +21,12 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 
 # The world of VueJS
 
-| Product                            | Description                             |
-| ---------------------------------- | --------------------------------------- |
-| [Vue.js](https://vuejs.org/)       | The Progressive JavaScript Framework    |
-| [Vuex](https://vuex.vuejs.org/en/) | Centralized State Management for Vue.js |
-| [Nuxt](https://nuxtjs.org/)        | Universal Vue.js Applications (SSR)     |
+| Product                            | Description                            |
+| ---------------------------------- | ---------------------------------------|
+| [Vue.js](https://vuejs.org/)       | The Progressive JavaScript Framework   |
+| [Router](https://router.vuejs.org/)| Vue.js router                          |
+| [Vuex](https://vuex.vuejs.org/en/) | Centralized State Management for Vue.js|
+| [Nuxt](https://nuxtjs.org/)        | Universal Vue.js Applications (SSR)    |
 
 <br>
 
@@ -42,6 +43,7 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 ## My first app
 
 index.html
+
 ```html
 <!DOCTYPE html>
 <html lang="en">

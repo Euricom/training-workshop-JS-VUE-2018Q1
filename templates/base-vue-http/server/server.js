@@ -10,7 +10,7 @@ app.use(morgan('dev'));
 app.use(
   bodyParser.urlencoded({
     extended: true,
-  }),
+  })
 );
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -130,5 +130,5 @@ app.delete('/api/users/:id', (req, res) => {
 //
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
-  console.log(`Express server listening on port: ${server.address().port}`);
+  console.log(`Express server listening on port: http://localhost:${server.address().port}`);
 });
