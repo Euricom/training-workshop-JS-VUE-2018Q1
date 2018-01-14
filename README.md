@@ -71,4 +71,21 @@ added 367 packages in 12.583s
 
 [See Also](https://github.com/Euricom/training-workshop-JS-VUE-jan2018/tree/master/slides)
 
+## Update the workshop content
+
+```bash
+$ cd your-working-folder
+# get latest version of the git repo
+$ git pull
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 1), reused 2 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From https://github.com/Euricom/training-workshop-JS-VUE-jan2018
+   1ad0b69..fe38569  master     -> origin/master
+Updating 1ad0b69..fe38569
+Fast-forward
+ README.md | 53 +++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 51 insertions(+), 2 deletions(-)
+```
 
