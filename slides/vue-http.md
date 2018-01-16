@@ -167,7 +167,7 @@ export default {
     },
     created() {
         axios.get('api/users')
-             .then(users => this.users = user);
+             .then(res => this.users = res.data);
     }
 }
 </script>
@@ -195,8 +195,8 @@ export default {
     },
     created() {
         axios.get('api/users')
-             .then(users => this.users = user)
-             .catch(error => this.errorMessage = error.message)
+             .then(res => this.users = res.data)
+             .catch(error => this.errorMessage = error.message);
     }
 }
 </script>
@@ -223,13 +223,13 @@ export default {
     created() {
         // get the single user
         axios.get('api/users/123')
-             .then(user => this.user = user)
+             .then(res => this.users = res.data)
     },
     methods: {
         onSubmit() {
             // update the user
             axios.put('api/users/123', this.user)
-                 .then(user => {
+                 .then(res => {
                     console.log('success saved')
                  })
         }
