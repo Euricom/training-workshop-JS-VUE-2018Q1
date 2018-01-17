@@ -11,7 +11,7 @@
     "start": "nodemon server/server.js",
     "cleanup": "rimraf dist",
     "lint": "eslint 'src/**/*.{js,vue}'; exit 0",
-    "format": "prettier --write '**/*.{js,css}'"
+    "format": "prettier --write '**/*.{js,css,vue}'"
   },
   "dependencies": {
     "body-parser": "^1.16.0",
@@ -41,8 +41,13 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-vue": "^4.1.0",
     "file-loader": "^1.1.4",
-    "prettier": "^1.9.2",
+    "install": "^0.10.2",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "npm": "^5.6.0",
+    "prettier": "^1.10.2",
     "rimraf": "^2.6.2",
+    "uglifyjs-webpack-plugin": "^1.1.6",
     "url-loader": "^0.6.2",
     "vue-loader": "^13.0.5",
     "vue-template-compiler": "^2.4.4",

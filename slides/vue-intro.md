@@ -657,7 +657,10 @@ In code (props becomes available in template)
 </template>
 <script>
 export default {
-  props: ['title', 'number'],
+  props: {
+    title: String,
+    number: String
+  },
   data() {
     ...
   }
@@ -683,7 +686,7 @@ You can use `:syntax` on the custom properties
 
 ## Custom events
 
-```js
+```html
 <template>
   <div>
       <h1>My Super Button</h1>
