@@ -21,15 +21,15 @@
           </tr>
         </tbody>
       </table>
-      <h4>Total: {{basket.totalPrice | currency}}</h4>
+        <h4>Total: {{basket.totalPrice | currency}}</h4>
     </div>
   </div>
 </template>
 
 <script>
-import { eventBus } from '../main'
-import basketService from '../services/basketService'
-import productService from '../services/productService'
+import { eventBus } from '../main';
+import basketService from '../services/basketService';
+import productService from '../services/productService';
 import { Basket } from '../models/basket';
 
 export default {
@@ -39,26 +39,28 @@ export default {
     };
   },
   mounted() {
-    eventBus.$on('addToBasket', (event) => {
+    eventBus.$on('addToBasket', event => {
       this.basket.addProduct(event.product, event.quantity);
-    })
-    basketService.get()
+    });
+    basketService
+      .get()
       .then(basket => {
         const promises = [];
         this.basket = basket;
         this.basket.items.forEach(item => {
-          promises.push(productService.getById(item.id))
-        })
-        return Promise.all(promises)
+          promises.push(productService.getById(item.id));
+        });
+        return Promise.all(promises);
       })
       .then(products => {
         products.forEach(product => {
           this.basket.updateProductInfo(product);
         });
-      })
-  }
+      });
+  },
 };
 </script>
 
 <style scoped>
+
 </style>

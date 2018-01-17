@@ -9,14 +9,10 @@ module.exports = {
       const random = faker.random.number(2);
       if (random === 1) {
         firstName = faker.name.findName(1);
-        imageUrl = `https://api.randomuser.me/portraits/women/${faker.random.number(
-          100,
-        )}.jpg`;
+        imageUrl = `https://api.randomuser.me/portraits/women/${faker.random.number(100)}.jpg`;
       } else {
         firstName = faker.name.findName(0);
-        imageUrl = `https://api.randomuser.me/portraits/men/${faker.random.number(
-          100,
-        )}.jpg`;
+        imageUrl = `https://api.randomuser.me/portraits/men/${faker.random.number(100)}.jpg`;
       }
       const lastName = faker.name.lastName();
       users.push({

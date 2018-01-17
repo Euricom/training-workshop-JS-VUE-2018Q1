@@ -42,25 +42,25 @@
 </template>
 
 <script>
-import { eventBus } from '../main'
+import { eventBus } from '../main';
 
 export default {
   props: ['product'],
   data() {
     return {
-      quantity: 1
+      quantity: 1,
     };
   },
   methods: {
     onAdd() {
-      eventBus.$emit('addToBasket', { product: this.product, quantity: +this.quantity })
-    }
+      eventBus.$emit('addToBasket', { product: this.product, quantity: +this.quantity });
+    },
   },
   computed: {
     hasProductInStock() {
       return this.product.stocked;
-    }
-  }
+    },
+  },
 };
 </script>
 

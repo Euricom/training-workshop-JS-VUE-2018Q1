@@ -1,5 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -19,6 +21,7 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {},
+          extractCSS: process.env.NODE_ENV === 'production',
           // other vue-loader options go here
         },
       },
@@ -82,14 +85,9 @@ if (process.env.NODE_ENV === 'production') {
         NODE_ENV: '"production"',
       },
     }),
-    new webpack.optimize.UglifyJsPlugin({
+    new UglifyJsPlugin({
       sourceMap: true,
-      compress: {
-        warnings: false,
-      },
     }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-    }),
+    new ExtractTextPlugin('style.css'),
   ]);
 }

@@ -22,10 +22,11 @@ export default {
   name: 'app',
   components: {
     Products,
-    Basket
+    Basket,
   },
 };
 </script>
 
 <style>
+
 </style>

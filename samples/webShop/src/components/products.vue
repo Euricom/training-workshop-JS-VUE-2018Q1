@@ -15,7 +15,7 @@ import Product from './product.vue';
 
 export default {
   components: {
-    Product
+    Product,
   },
   data() {
     return {
@@ -23,11 +23,10 @@ export default {
     };
   },
   mounted() {
-    productService.getAll()
-      .then(products => {
-        this.products = products;
-      })
-  }
+    productService.getAll().then(products => {
+      this.products = products;
+    });
+  },
 };
 </script>
 
