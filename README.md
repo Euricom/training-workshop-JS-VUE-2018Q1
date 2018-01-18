@@ -67,7 +67,11 @@ added 367 packages in 12.583s
 - [Intro](./slides/intro.md)
 - [Know your JavaScript](./slides/know-your-javascript.md)
 - [VueJS Intro](./slides/vue-intro.md)
+- [VueJS Components](./slides/vue-components.md)
+- [VueJS Forms](./slides/vue-forms.md)
 - [VueJS Http](./slides/vue-http.md)
+- [VueJS 3th Party](./slides/vue-3thParty.md)
+- [What Next](./slides/whats-next.md)
 
 [See Also](https://github.com/Euricom/training-workshop-JS-VUE-jan2018/tree/master/slides)
 

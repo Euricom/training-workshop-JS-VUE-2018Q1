@@ -29,7 +29,7 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 #### UI Toolkits
 - [iView](https://www.iviewui.com/)
 - [Element](http://element.eleme.io/#/en-US)
-- ...
+- [Quasar (Mobile)](http://quasar-framework.org/)
 
 #### Utilities
 -  [vue-i18n](https://kazupon.github.io/vue-i18n/en/)
@@ -37,7 +37,10 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 - [vue-cookie](https://github.com/alfhen/vue-cookie)
 - ...
 
-[See also Awesome VueJS](https://github.com/vuejs/awesome-vue)
+See Also
+
+[Awesome VueJS](https://github.com/vuejs/awesome-vue)
+[Curated](https://curated.vuejs.org)
 
 ---
 

@@ -27,9 +27,10 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 
 - 12:00 Lunch
 
-- 13:00 VueJS Intro cont.
+- 13:00 VueJS Components
 - 15:00 VueJS Http
-- 16:00 VueJS Extensions
+- 16:00 VueJS Forms
+- 16:30 VueJS 3th party component
 
 - 17:00 Questions & answers
 
@@ -49,16 +50,6 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
     + NodeJS, MongoDB
     + Mobile (hybrid)
     + Serverless
-
----
-
-# Agenda
-
-- Environment, Editor & Tooling
-- Know your javascript
-- VueJS Introduction
-- VueJS Http
-- VueJS & 3th party libraries
 
 ---
 

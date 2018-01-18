@@ -28,14 +28,14 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 | [Vuex](https://vuex.vuejs.org/en/) | Centralized State Management for Vue.js|
 | [Nuxt](https://nuxtjs.org/)        | Universal Vue.js Applications (SSR)    |
 
-<br>
+See also
 
-[https://github.com/vuejs/awesome-vue](https://github.com/vuejs/awesome-vue)
+- [Awesome VueJS](https://github.com/vuejs/awesome-vue)
+- [Curated](https://curated.vuejs.org)
 
 ---
 
 # Quick Start
-
 > Easy does it.
 
 ----
@@ -112,8 +112,7 @@ Open devtools and notice the following message:
 
 [Get it on the Chrome Web Store](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
 
-You can inspect the Vue components and interact with them. See also the $vm0 (and others)
-variabled to inpect or change via the console.
+You can inspect the Vue components and interact with them. See also the $vm0 (and others) variabled to inpect or change via the console.
 
 > Single root of truth: the view, the data, the console, the devtools.
 
@@ -129,6 +128,7 @@ variabled to inpect or change via the console.
 ## Combining template and script
 
 app.vue
+
 ```html
 <template>
   <div>
@@ -236,7 +236,7 @@ Notice that the style is applied to the full application
 
 ----
 
-## Scoped styling
+## Scoped styling & Less
 
 ```html
 <!-- message.vue -->
@@ -248,6 +248,19 @@ h1 {
 ```
 
 Notice that the styling is now  applied to the `Message` component only.
+
+```html
+<style lang="less">
+@import "~bootstrap/dist/css/bootstrap.css";
+@import (reference) "../variable.less"
+@alert-color: red
+h1 {
+    color: @alert-color
+}
+</style>
+```
+
+You need to install the less-loader & less module to make this work
 
 ----
 
@@ -526,236 +539,31 @@ More: https://vuejs.org/v2/guide/events.html#Event-Modifiers
 
 ---
 
-# Exercise
+## Event Bus
 
-> Use a button to toggle (hide/show) a paragraph of text
-
-- Look for 3 solutions
-
----
-
-# Components
-
-> The power of VueJS
-
-----
-
-## What are components
-
-In a large application, it is necessary to divide the whole app into components to make development manageable.  So a component is a re-usable UI components.
-
-```html
-<div id="app">
-  <app-nav></app-nav>
-  <app-layout>
-    <app-sidebar></app-sidebar>
-    <app-content>
-      ...
-    </app-content>
-  </app-layout>
-</div>
-```
-
-> It's like extending your html
-
-----
-
-## How to create
-
-myComponent.vue
-
-```html
-<template>
-  <div>
-    <h2>My Component</h2></H2>
-  </div>
-</template>
-<script>
-export default {
-  // ...
-}
-</script>
-```
-
-app.vue
-
-```html
-<template>
-  <my-component></my-component>
-</template>
-<script>
-import MyComp from './myComponent.vue'
-export default {
-  components: {
-    // list the components used in this component
-    MyComponent,
-  },
-  data () {
-    ...
-  }
-}
-</script>
-```
-
-Note: Notice the CamelCase to kebab-case translation
-
-----
-
-## Slots
-
-Slots are used to pass all the inner content (like inner html).
-
-myComponent.vue
-
-```html
-<template>
-  <div>
-    <h1>{{title}}</h1>
-    <slot></slot>
-  </div>
-</template>
-<script>
-  export default {
-    ...
-  }
-</script>
-```
-
-And use it
-
-```html
-<div id="root">
-  <my-component>
-    <span>Add some text here</span>
-  </my-component>
-</div>
-```
-
-----
-
-## Custom attributes: props
-
-I want to set my title on the component
-
-```html
-<div id="app">
-  <my-component title="My Component Title" number="5">
-    <span> Add some text here </span>
-  </my-component>
-</div>
-```
-
-In code (props becomes available in template)
-
-```html
-<template>
-  <div>
-    <h1>{{title}}</h1>
-    <h3>{{number}}</h3>
-    <slot></slot>
-  </div>
-</template>
-<script>
-export default {
-  props: {
-    title: String,
-    number: String
-  },
-  data() {
-    ...
-  }
-}
-</script>
-```
-
-More https://vuejs.org/v2/guide/components.html#Prop-Validation
-
-----
-
-## Dynamic props
-
-You can use `:syntax` on the custom properties
-
-```html
-<my-component :title="title" :number="number">
-    <span> Add some text here </span>
-</my-component>
-```
-
-----
-
-## Custom events
-
-```html
-<template>
-  <div>
-      <h1>My Super Button</h1>
-      <button @click="onClick()">Finish</button>
-  </div>
-</template>
-<script>
-export {
-  data() {
-  },
-  methods: {
-    onClick() {
-        this.$emit('handled', { id: 123 })
-    }
-}
-</script>
-```
-
-```html
-<div id="root">
-  <my-component @handled="onHandled($event)">
-  </my-component>
-</div>
-```
-
----
-
-# Filters
-> Format your values
-
-----
-
-## Filters
-
-Simple text formatting
-
-```html
-{{ message | toUpperCase }}
-
-<div v-text="date | formatDate"></div>
-```
-Create a custom filter
+In simple scenarios, you can use an empty Vue instance as a central event bus.
 
 ```js
-import Vue from "vue"
-Vue.filter('toUpperCase', (value) => {
-  if (!value) return ''
-  return value.toString().toUpperCase()
-})
+    var bus = new Vue();
 ```
 
-Can take arguments
+In a component
 
-```html
-{{ message | filterA('arg1', arg2) }}
+```js
+    bus.$emit('myEvent', 123)              // same instance
 ```
 
-Can be chained
+And listen for it
 
-```html
-{{ message | filter1 | filter2 }}
+```js
+    but.$on('myEvent', (value) => {
+        ...
+    })
 ```
-
-VueJS 2.0 doesn't provide filters: [3th party package](
-https://github.com/freearhey/vue2-filters)
 
 ---
 
-## Lifecycle events
+# Lifecycle events
 
 ```js
 export default {
@@ -782,183 +590,9 @@ More: https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram
 
 # Exercise
 
-> Create dismissible bootstrap alert
+> Use a button to toggle (hide/show) a paragraph of text
 
-- Use bootstrap styling: http://getbootstrap.com/components/#alerts-dismissible
-- Create VueJS component
-
-```html
-    <!-- default alert: warning -->
-    <alert>
-        Almost out of stock
-    </alert>
-
-    <!-- custom alert with event -->
-    <alert type="alert" @closed="onClosed()">
-        <strong>Alert!</strong> We have a problem.
-    </alert>
-```
-
-- Don't use jqeury or the bootstrap js library
-- Log a message to the console if the dialog is closed
+- Look for multiple solutions
 
 ---
 
-# Forms
-
-> Get your user input
-
-----
-
-## Basic Usage
-
-```html
-<!-- text -->
-<input v-model="message" placeholder="edit me">
-<p>Message is: {{ message }}</p>
-```
-```html
-<!-- checkbox -->
-<input type="checkbox" id="checkbox" v-model="checked">
-<label for="checkbox">{{ checked }}</label>
-```
-```html
-<!-- radio -->
-<input type="radio" id="one" value="One" v-model="picked">
-<label for="one">One</label>
-<br>
-<input type="radio" id="two" value="Two" v-model="picked">
-<label for="two">Two</label>
-<br>
-<span>Picked: {{ picked }}</span>
-```
-```html
-<!-- select -->
-<select v-model="selected">
-    <option v-for="option in options" :value="option.value">
-        {{ option.text }}
-    </option>
-</select>
-<span>Selected: {{ selected }}</span>
-```
-
-<small>
-For form validation see: [https://github.com/logaretm/vee-validate](https://github.com/logaretm/vee-validate)
-</small>
-
-----
-
-## Form Submit
-
-Form with bootstrap styling
-
-```html
-<form @submit.prevent="addUser">
-  <div class="form-group">
-    <label for="firstName">First Name:</label>
-    <input type="text" class="form-control"
-           id="firstName" v-model="user.firstName">
-  </div>
-
-  ... other
-
-  <button class="btn btn-defaut" @click.prevent="$router.go(-1)">Back</button>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
-```
-
----
-
----
-
-## App Events
-
-> Communicating between components
-
-----
-
-Communicating between components with direct access
-
-```js
-    this.$root          // app root
-    this.$parent        // parent component
-    this.$children      // children components
-```
-
-> ***Warning***: Only use them when you know why you should.
-
-----
-
-## Event Bus
-
-In simple scenarios, you can use an empty Vue instance as a central event bus.
-
-```js
-    var bus = new Vue();
-```
-
-In a component
-
-```js
-    bus.$emit('myEvent', 123)              // same instance
-```
-
-And listen for it
-
-```js
-    but.$on('myEvent', (value) => {
-        ...
-    })
-```
-
-----
-
-## Event Aggregator
-
-```js
-class EventAggregator {
-    constructor() {
-        this.vue = new Vue()
-    }
-
-    fire(event, data = null) {
-        this.vue.$emit(event, data)
-    }
-
-    listen(event, callback) {
-        this.vue.$on(event, callback)
-    }
-}
-export const eventAggregator = new EventAggregator()
-```
-
-Usage
-
-```js
-import { eventAggregator } from 'eventAggregator'
-
-// component A
-methods: {
-    onClick() {
-        eventAggregator.fire('myEvent', { ... })
-    }
-}
-
-// component B
-created() {
-    eventAggregator.listen('myEvent', (value) => {
-        console.log('handle it: ', value)
-    })
-}
-```
-
----
-
-# Resources
-
-Learn
-
-- [Learn Vue 2: Step By Step](https://laracasts.com/series/learn-vue-2-step-by-step)
-- [Vue.js, Vuex, and Testing; an Introduction](http://tyronetudehope.com/2016/11/24/vue-js-vuex-testing-an-introduction)
-- [VueJs: Filters](https://coligo.io/vuejs-filters/)
-- [vueschool.io](https://vueschool.io)
