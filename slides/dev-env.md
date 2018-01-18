@@ -1,4 +1,4 @@
-# Development Environment
+# JavaScript Development Environment
 <small>by Peter Cosemans</small>
 <br>
 <br>
@@ -93,7 +93,7 @@ Ordered
 ...
 ```
 
-[See Also](https://guides.github.com/features/mastering-markdown/) and [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+See Also [here](https://guides.github.com/features/mastering-markdown/) and [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 ----
 
@@ -361,7 +361,7 @@ Resources
 
 # Combine it all
 
-You can use ```./templates/base``` as a base for javascript projects
+You can use ```./templates/base*``` as a base for javascript projects
 
 ```bash
 ./templates/base
@@ -411,4 +411,8 @@ npm run format
 
 # lint code
 npm run lint
+
+# build code (only for ESM)
+npm run build
+npm run build:prod
 ```

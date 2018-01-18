@@ -1,5 +1,5 @@
 # VueJS Components
-<img src="./images/vue-logo.png" width="400px" /><br>
+<img src="./images/vue-file.png" width="300px" /><br>
 <small>by Peter Cosemans</small>
 <br>
 <br>
@@ -66,14 +66,14 @@ app.vue
 
 ```html
 <template>
-  <my-component></my-component>
+  <my-comp></my-comp>
 </template>
 <script>
 import MyComp from './myComponent.vue'
 export default {
   components: {
     // list the components used in this component
-    MyComponent,
+    MyComp,
   },
   data () {
     ...
@@ -110,9 +110,9 @@ And use it
 
 ```html
 <div id="root">
-  <my-component>
+  <my-comp>
     <span>Add some text here</span>
-  </my-component>
+  </my-comp>
 </div>
 ```
 
@@ -124,9 +124,9 @@ I want to set my title on the component
 
 ```html
 <div id="app">
-  <my-component title="My Component Title" number="5">
+  <my-comp title="My Component Title" number="5">
     <span> Add some text here </span>
-  </my-component>
+  </my-comp>
 </div>
 ```
 
@@ -159,7 +159,7 @@ More https://vuejs.org/v2/guide/components.html#Prop-Validation
 
 ## Dynamic props
 
-You can use `:syntax` on the custom properties
+You can access the with the v-bind (:title) syntax.
 
 ```html
 <my-component :title="title" :number="number">
@@ -220,5 +220,6 @@ export {
 
 - Don't use jqeury or the bootstrap js library
 - Log a message to the console if the dialog is closed
+- Provide a way to open the alert message again
 
 ---

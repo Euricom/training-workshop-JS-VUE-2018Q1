@@ -20,7 +20,7 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 # Forms
 > Get your user input
 
-----
+---
 
 ## Basic Usage
 
@@ -58,14 +58,14 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 For form validation see: [https://github.com/logaretm/vee-validate](https://github.com/logaretm/vee-validate)
 </small>
 
-----
+---
 
 ## Form Submit
 
 Form with bootstrap styling
 
 ```html
-<form @submit.prevent="addUser">
+<form @submit.prevent="addUser()">
   <div class="form-group">
     <label for="firstName">First Name:</label>
     <input type="text" class="form-control"
@@ -74,20 +74,31 @@ Form with bootstrap styling
 
   ... other
 
-  <button type"button" class="btn btn-defaut" @click="$router.go(-1)">Back</button>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
 ```
 
-----
+```js
+export default {
+  data() {
+    user: {}
+  },
+  methods: {
+    addUser() {
+      console.log(this.user)
+    }
+  }
+} 
+```
+
+---
 
 ## Form Validation
 
-VueJS does not provide any form validation :(
+NOT AVAILABLE FROM VUEJS
 
 So...
 
-> Use [Vuelidate](https://monterail.github.io/vuelidate/): Simple, lightweight model-based validation for Vue.js 2.0
+> Use [Vuelidate](https://monterail.github.io/vuelidate/)<br>Simple, lightweight model-based validation for Vue.js 2.0
 
----
 

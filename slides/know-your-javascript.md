@@ -65,19 +65,22 @@ Note:
 
 The syntax, for declaring [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode), was designed to be compatible with older versions of JavaScript.
 
+None strict
+
 ```
-'use strict';
-var a = '1234';
-console.log(b);         // error
+a = '1234';
+console.log(a);         // a is created on window object
 ```
 
-Not Allowed to:
-- Using a variable/object without declaring it
-- Deleting a variable
-- With statement
-- Keywords: interface, private, yield, ...
-- ...
-- [See also](https://developer.mozilla.org/nl/docs/Web/JavaScript/Reference/Strict_mode)
+Strict
+
+```
+'use strict';
+a = '1234';
+console.log(a);         // error
+```
+
+ECMAScript 5's [strict mode](https://developer.mozilla.org/nl/docs/Web/JavaScript/Reference/Strict_mode) is a way to opt in to a restricted (BETTER) variant of JavaScript. 
 
 > always 'use strict' when using Javascript in ES5
 
@@ -169,6 +172,7 @@ The value of the this reference is defined by the following rules:
 - Explicit binding
 - Hard binding
 - new operator
+- Arrow function
 
 Rules are applied in reverse order.
 
@@ -270,16 +274,6 @@ const user = new User('peter');
 user.name;         // 'peter'
 ```
 
-----
-
-## this
-### Summary: So to know the value of `this`:
-
-- Is the function called from an object created by `new`?
-- Is the function hard bind to `this` or is an arrow function?
-- Is the function called with `call` or `apply` specifying an explicit `this`?
-- Is the function called via a containing/owing object (call context)?
-
 ---
 
 # JS Quirks
@@ -303,7 +297,7 @@ console.log(3 === "3");         // false
 
 See [http://dorey.github.io/JavaScript-Equality-Table/](http://dorey.github.io/JavaScript-Equality-Table/)
 
-> Always use `===` unless you have a good reason to use `==`
+> Always use `===`<br> unless you have a good reason to use `==`
 
 ----
 
@@ -341,6 +335,8 @@ NaN (a special Number value meaning Not-a-Number!)
 ----
 
 ## parseInt
+
+parseInt
 
 ```js
 parseInt('16')          // 16
@@ -406,7 +402,7 @@ Object.is(a, NaN)       // true
 
 ## Array handling
 
-Object array
+Our array
 
 ```js
 const companies = [
@@ -416,14 +412,85 @@ const companies = [
 ]
 ```
 
-Don't write this code!
+Usefull Array functions
+
+- forEach
+- map
+- reduce
+- filter
+- sort
+- find
+
+----
+
+## Array - for loops
+
+Good old for loop
 
 ```js
-const names = [];
+for (let i=0; i < companies.length; i++) {
+  console.log(item)
+}
+```
+
+Prefere
+
+```js
+// forEach (loop over all items)
+companies.forEach(item => {
+  console.log(item)
+})
+```
+
+or
+
+```js
+// ES6 version
+for (let item of companies)
+  console.log(item)
+})
+```
+
+----
+
+## Array - Mapping/Transformation
+
+Good old for loop
+
+```js
+const companyNames = [];
 for (let i=0; i < companies.length; i++) {
   names.push(companies[i].name)
 }
 ```
+
+Prefered
+
+```js
+const companyNames = companies.map(item => {
+  return item.name;
+}
+
+// or even shorter
+const companyNames = companies.map(item => item.name)
+```
+
+Other example
+
+```js
+const transformed = companies.map(item => {
+  return {
+    id: item.id.toString(),
+    name: item.name;
+  }
+})
+```
+
+----
+
+### Array - Calculation (sum, group, ...)
+
+Old style
 
 ```js
 const totEmployees = 0;
@@ -432,39 +499,29 @@ for (let i=0; i < companies.length; i++) {
 }
 ```
 
+Prefere
+
 ```js
-companies.splice(2, 1);
+// reduce
+const totEmployees = companies.reduce((acc, item) => {
+  return acc + item.employees;
+}, 0)
 ```
 
 ----
 
-## ES array functions
+## Array - Filter, Find and Sort 
 
 ```js
-// forEach (loop over all items)
-companies.forEach(item => {
-  console.log(item)
-})
-
 // filter
+const bigCompanies = companies.filter(item => {
+  return item.employees > 1000;
+})
+// filter: short version
 const bigCompanies = companies.filter(item => item.employees > 1000)
 
 // find
 const acme = companies.find(item => item.name === 'Acme')
-
-// map (transform items)
-const transformed = companies.map(item => {
-  return {
-    id: item.id.toString(),
-    name: item.name;
-  }
-})
-const companyNames = companies.map(item => item.name)
-
-// reduce
-const totEmployees = companies.map((acc, item) => {
-  return acc + item.employees;
-}, 0)
 
 // sort
 const sortedCompanies = companies.sort((a, b) => a.name > b.name)
@@ -488,9 +545,7 @@ Add item to array
 
 ```js
 const name = 'Wolfoods';
-const newId = companies.reduce((acc, item) => {
-  return Math.max(acc, item.id);
-}, 0) + 1
+const newId = companies.reduce((acc, item) => Math.max(acc, item.id), 0) + 1;
 companies.push({
   id: newId,
   name
@@ -498,17 +553,17 @@ companies.push({
 })
 ```
 
-Remove an item from an array
+Remove an item from an array (don't use splice)
 
 ```js
 const idToRemove = 999;
-companies = companies.filter(item => item.id == idToRemove)
+companies = companies.filter(item => item.id === idToRemove)
 ```
 
 Update an item
 
 ```js
-const company = companies.find(item => item.id == 1)
+const company = companies.find(item => item.id === 1)
 company.name = 'Other name'
 ```
 
@@ -629,6 +684,29 @@ You can use expressions
 
 ----
 
+## Need for isolation
+
+awesomeLib/main.js
+
+```js
+// library/main.js
+var name = 'peter'
+function doThis() { console.log('hello', 'peter') }
+```
+
+myApp/component.js
+
+```js
+function setCustomer() {
+  // oops, forgot var
+  name = 'euricom'
+}
+setCustomer();
+function doThis() { console.log('byebye', 'peter') }
+```
+
+----
+
 ## IIFE
 
 Immediately-Invoked Function Expression (IIFE).
@@ -655,46 +733,46 @@ const myModule = (function() {
 myModule.doThis();
 ```
 
-> Always use strict mode.
+> And, always use strict mode.
 
 ----
 
-## ES Module
+## ES Module - Import / Export
 
-Oops, not supported by any browser (yet).
+myService.js
 
 ```js
-// service.js
-export const MAX_LENGTH = 1000;
-export class Car() {
+export const MAX_LENGTH = 1000;             // named const export 
+export class Car() {                        // named class export
     ...
 }
 const config = {
     ...
 }
-export default config;
+export default config;                      // default (unnamed) export
 ```
+
+main.js
 
 ```js
-// main.js
-import config from './service';
-import { MAX_LENGTH, Car } from './service'
+import config from './service';              // default import
+import { MAX_LENGTH, Car } from './service'  // named imports
 
-import * as lib from './service';
+import * as lib from './service';            // import all
 console.log(lib.MAX_LENGTH)
 const car = new lib.Car();
-
-import config, { MAX_LENGTH, Car } from './service'
 ```
 
-ES Modules can be used by using a transpiler (Babel)
+Oops, not supported by any browser (yet).
+But ES Modules can be used by using a transpiler (Babel)
 
-> No need for IIFE & strict mode :)
+> Strict mode is default enabled  :)
 
 ---
 
-# Resources
+# Resources & Training
 
+- [Wes Bos ES6 training](https://es6.io/)
 - [You-Dont-Know-JS Book series](https://github.com/getify/You-Dont-Know-JS)
 - [Frontendmasters - Kyle Simpson](https://frontendmasters.com/courses/)
 - [JavaScript Weekly](http://javascriptweekly.com/)

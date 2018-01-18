@@ -68,7 +68,7 @@ DELETE api/users/123      # delete user with id = 123
 
 ## HTTP In VueJS
 
-Unlike Angular there is HTTP support in VueJS
+Unlike Angular there is no HTTP support in VueJS
 
 But we can use following JavaScript solutions:
 
@@ -76,7 +76,7 @@ Fetch
 
 > Fetch, the modern xmlhttprequest version
 
-Axios
+or Axios
 
 > Axios, a 3th party http library
 
@@ -238,3 +238,18 @@ export default {
 </script>
 ```
 
+
+
+---
+
+# Exercise
+
+Build an application to manage users<br>
+(you can use the `.../template/base-vue-http` to start from)
+
+- List users retrieved by REST api (GET /api/users)
+- Select user
+- Edit selected user in form
+- Submit user and update on server (PUT /api/users/1123)
+- (optional) delete user (DELETE /api/users/1123)
+- (optional) add a new user (POST /api/users)

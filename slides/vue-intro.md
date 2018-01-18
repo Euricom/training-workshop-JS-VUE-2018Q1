@@ -22,8 +22,8 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 # The world of VueJS
 
 | Product                            | Description                            |
-| ---------------------------------- | ---------------------------------------|
-| [Vue.js](https://vuejs.org/)       | The Progressive JavaScript Framework   |
+| -----------------------------------| ---------------------------------------|
+| [Vue.js](https://vuejs.org/)**     | The Progressive JavaScript Framework   |
 | [Router](https://router.vuejs.org/)| Vue.js router                          |
 | [Vuex](https://vuex.vuejs.org/en/) | Centralized State Management for Vue.js|
 | [Nuxt](https://nuxtjs.org/)        | Universal Vue.js Applications (SSR)    |
@@ -32,6 +32,8 @@ See also
 
 - [Awesome VueJS](https://github.com/vuejs/awesome-vue)
 - [Curated](https://curated.vuejs.org)
+
+<small>** = covered in this workshop</small>
 
 ---
 
@@ -83,7 +85,7 @@ Note:
 
 ----
 
-## Magic 2 way data binding
+## (Magical) 2 way data binding
 
 Lets add an input element to the page
 
@@ -238,6 +240,8 @@ Notice that the style is applied to the full application
 
 ## Scoped styling & Less
 
+Scope the style to message component only
+
 ```html
 <!-- message.vue -->
 <style scoped>
@@ -247,20 +251,7 @@ h1 {
 </style>
 ```
 
-Notice that the styling is now  applied to the `Message` component only.
-
-```html
-<style lang="less">
-@import "~bootstrap/dist/css/bootstrap.css";
-@import (reference) "../variable.less"
-@alert-color: red
-h1 {
-    color: @alert-color
-}
-</style>
-```
-
-You need to install the less-loader & less module to make this work
+Notice that the style is applied to only the component
 
 ----
 
@@ -277,7 +268,7 @@ h1 {
 </style>
 ```
 
-> You need to configure webpack to add less support
+> You need to configure webpack to add less support: install the less-loader & less to make this work
 
 ---
 
@@ -339,12 +330,41 @@ Use the `v-for` directive
 ```html
 <div id="app">
     <ul>
-        <li v-for="name in names">{{name}}</li>
+        <li v-for="name of names">{{name}}</li>
     </ul>
 </div>
 ```
 
 > You can inpect the array in the devTools
+
+----
+
+## List Binding - Object Array
+
+```js
+data() {
+    return {
+        users: [
+          {id: 1, name:'peter', role: 'admin'}
+          {id: 2, name:'bert', role: 'power-user'}
+        ],
+    }
+},
+```
+
+Use the `v-for` directive & `:key` binding
+
+```html
+<div id="app">
+    <ul>
+        <li v-for="user of users" :key="user.id">
+          {{user.name}} : {{ user.role}}
+        </li>
+    </ul>
+</div>
+```
+
+> The vuejs - eslint integration will warn you<br> if you don't use :key
 
 ----
 
@@ -367,7 +387,7 @@ Use the `v-for` directive
 <h1 v-show="ok">Hello!</h1>
 ```
 
-> `v-show` is using CSS to show/hide content, `v-if` removes the content from the dom.
+> `v-show` - is using CSS to show/hide content<br>`v-if` - removes the content from the dom.
 
 ----
 
@@ -384,7 +404,7 @@ Set button title at runtime: `:title` syntax (v-bind` directive)
 ```js
 data() {
     return {
-        names: ['Joe', 'Mary', 'Jane', 'Jack'],
+        ...
         buttonTitle: 'Click me to add a name',
     }
 }
@@ -593,6 +613,6 @@ More: https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram
 > Use a button to toggle (hide/show) a paragraph of text
 
 - Look for multiple solutions
+- Optional add some bootstrap styling 
 
----
 

@@ -30,6 +30,7 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 
 # Good To Know
 
+- Improve your JavaScript (ES6+)
 - [TypeScript](https://vuejs.org/v2/guide/typescript.html)
 - [Unit testing](https://vuejs.org/v2/guide/unit-testing.html) 
 - [S.O.L.I.D](https://medium.com/@cramirez92/s-o-l-i-d-the-first-5-priciples-of-object-oriented-design-with-javascript-790f6ac9b9fa)

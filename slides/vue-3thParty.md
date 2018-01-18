@@ -24,13 +24,13 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 
 ----
 
-##  A sort list
+##  Usefull components
 
 #### UI Toolkits
 - [iView](https://www.iviewui.com/)
 - [Element](http://element.eleme.io/#/en-US)
 - [Quasar (Mobile)](http://quasar-framework.org/)
-
+<br><br>
 #### Utilities
 -  [vue-i18n](https://kazupon.github.io/vue-i18n/en/)
 - [vuejs-storage](https://github.com/maple3142/vuejs-storage)
@@ -39,7 +39,7 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 
 See Also
 
-[Awesome VueJS](https://github.com/vuejs/awesome-vue)
+[Awesome VueJS](https://github.com/vuejs/awesome-vue) and 
 [Curated](https://curated.vuejs.org)
 
 ---
@@ -47,7 +47,7 @@ See Also
 # iView
 > A high quality UI Toolkit based on Vue.js
 
------
+----
 
 ## Install
 
@@ -64,6 +64,8 @@ ES Modules (preferred)
 ```bash
 $ npm install iview
 ```
+
+---
 
 ## Use
 
@@ -105,5 +107,3 @@ export default {
 };
 </script>
 ```
-
-----
