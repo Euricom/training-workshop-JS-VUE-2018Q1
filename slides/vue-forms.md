@@ -1,4 +1,4 @@
-# VueJS Introduction
+# VueJS Forms
 <img src="./images/vue-logo.png" width="400px" /><br>
 <small>by Peter Cosemans</small>
 <br>
@@ -88,7 +88,7 @@ export default {
       console.log(this.user)
     }
   }
-} 
+}
 ```
 
 ---
