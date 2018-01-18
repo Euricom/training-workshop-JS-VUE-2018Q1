@@ -1,0 +1,45 @@
+{
+  "name": "base-vue",
+  "description": "A Vue.js starter project",
+  "version": "1.0.0",
+  "author": "Peter Cosemans <peter.cosemans@euri.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "serve": "cross-env NODE_ENV=development brunch watch --server",
+    "build": "cross-env NODE_ENV=production brunch build --production",
+    "build:prod": "cross-env NODE_ENV=production brunch build",
+    "cleanup": "rimraf dist",
+    "lint": "eslint 'src/**/*.{js,vue}'; exit 0",
+    "format": "prettier --write '**/*.{js,css}'"
+  },
+  "dependencies": {
+    "vue": "^2.5.11",
+    "vue-router": "^3.0.1",
+    "vueify": "^9.4.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "devDependencies": {
+    "babel-brunch": "^6.1.1",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "brunch": "^2.10.12",
+    "cross-env": "^5.0.5",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-vue": "^4.1.0",
+    "less-brunch": "^2.10.0",
+    "prettier": "^1.9.2",
+    "rimraf": "^2.6.2",
+    "uglify-js-brunch": "^2.10.0",
+    "vue-brunch": "^2.0.1"
+  }
+}
